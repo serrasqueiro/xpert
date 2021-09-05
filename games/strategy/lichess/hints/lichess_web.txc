@@ -1,0 +1,13 @@
+#-*- coding: ISO-8859-1 -*-
+# lichess_web
+
+Openings 5+3
+https://lichess.org/
+
+
+Your own blocked players
+https://lichess.org/rel/blocks
+
+
+Specific player's profile
+https://lichess.org/@/$1
