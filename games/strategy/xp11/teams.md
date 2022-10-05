@@ -3,15 +3,13 @@
 ## League
 
 1. Liga
-   + [A liga](http://www.xperteleven.com/standings.aspx?Lid=411258&Sel=T&Lnr=1&dh=2) - 1<sup>a</sup> liga
-     * Details [here](http://www.xperteleven.com/leagueInfo.aspx?Lid=411258&dh=2)
-   + [A liga](http://www.xperteleven.com/standings.aspx?Lid=411258&Sel=T&Lnr=2&dh=2) - 2<sup>a</sup> liga
-     * Details here (n/a).
-   + [Members](http://www.xperteleven.com/members.aspx?Lid=411258&Sel=99&dh=2)
+   + [A liga](http://www.xperteleven.com/standings.aspx?Lid=411258&Sel=T&Lnr=1&dh=2) - 1<sup>a</sup> liga,
+     * [here](https://xperteleven.com/standings.aspx?Lid=411258&Sel=T&Lnr=1&dh=2&plang=EN) english version
+       + [here](http://www.xperteleven.com/leagueInfo.aspx?Lid=411258&dh=2) - details
 
    + The Boards
-     * 1st League Dashboard [here](http://www.xperteleven.com/standings.aspx?Lid=411258&Sel=T&Lnr=1&dh=2)
-     * 1st League Dashboard [here](http://www.xperteleven.com/standings.aspx?Lid=411258&Sel=T&Lnr=2&dh=2)
+     * [here](http://www.xperteleven.com/standings.aspx?Lid=411258&Sel=T&Lnr=1&dh=2) - 1st League Dashboard
+     * [here](http://www.xperteleven.com/standings.aspx?Lid=411258&Sel=T&Lnr=2&dh=2) - 2nd League Dashboard (obsolete)
 
    + Season Schedule
      * 1st League Schedule [here](http://www.xperteleven.com/fixture.aspx?Lid=411258&Lnr=1&dh=2&plang=EN)
@@ -32,3 +30,9 @@
 - Here a few game samples
   1.  [here](http://www.xperteleven.com/gameDetails.aspx?GameID=319069347&dh=2)
       - (only one same shown, see fixture.aspx)
+
+## Championship
+1. [here](https://xperteleven.com/showroom.aspx?Lid=411258&Lnr=1&dh=2&Omg=10&Cup=0)
+   - round 10 (default language)
+1. [here](https://xperteleven.com/showroom.aspx?Lid=411258&Lnr=1&dh=2&Omg=10&Cup=0&plang=EN)
+   - round 10 (english language)
