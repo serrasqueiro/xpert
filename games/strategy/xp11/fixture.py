@@ -48,6 +48,8 @@ def dump_test(paths:list, cache_file):
     fixt = adict["fixture"]
     # Dump anchors
     dump_anchors(fixt)
+    # Table shorts
+    print("# :: tables:", fixt["tables"])
     return ""
 
 def dump_anchors(fixt):
@@ -55,10 +57,15 @@ def dump_anchors(fixt):
         entry = fixt["a-index"][key]
         astr = entry["string"]
         id_kind = entry["@id"]
+        if id_kind is None:
+            continue
         an_id = entry["attrs"].get("id")
         s_id = "" if an_id is None else f", {an_id}"
         check = f'"{astr}": {entry["href"]}{s_id}'
         print(f"::: a-index {key} {id_kind}:", check)
+        if id_kind and id_kind.endswith("hplResultat"):
+            print()
+    return True
 
 def get_fixture(datas:dict) -> tuple:
     myparam = {}
@@ -80,6 +87,7 @@ def processor(data) -> dict:
     soup = BeautifulSoup(html_doc, "html.parser")
     anchors = soup.find_all("a")
     all_a = {}
+    tabular = [[idx+1, table.attrs.get("id")] for idx, table in enumerate(soup.find_all("table"))]
     for idx, anchor in enumerate(anchors, 1):
         id_kind = None
         an_id = anchor.attrs.get("id")
@@ -97,6 +105,7 @@ def processor(data) -> dict:
         "title": soup.title.string.strip(),
         "anchors": anchors,
         "a-index": all_a,
+        "tables": tabular,
     }
     res = {
         "fixture": obj,
