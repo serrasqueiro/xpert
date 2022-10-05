@@ -36,3 +36,11 @@
    - round 10 (default language)
 1. [here](https://xperteleven.com/showroom.aspx?Lid=411258&Lnr=1&dh=2&Omg=10&Cup=0&plang=EN)
    - round 10 (english language)
+
+# fixture.py
+Use `bpython` to explore the HTML tree (using BeautifulSoup4).
+1. `importlib.reload(fixture)`
+1. `data = open(".xpert.data", "rb").read()`
+1. `adict = fixture.processor(data)`
+1. `tbls = [(key, adict["fixture"]["t-index"][key]) for key in adict["fixture"]["t-index"]]`
+1. `atables = [(elem["index"], elem["table-id"]) for elem in adict["fixture"]["tables"]]`

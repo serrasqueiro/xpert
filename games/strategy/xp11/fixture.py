@@ -86,8 +86,14 @@ def processor(data) -> dict:
     html_doc = data
     soup = BeautifulSoup(html_doc, "html.parser")
     anchors = soup.find_all("a")
-    all_a = {}
-    tabular = [[idx+1, table.attrs.get("id")] for idx, table in enumerate(soup.find_all("table"))]
+    all_a, t_index = {}, {}
+    tabular = [
+        {
+            "index": idx+1,
+            "table-id": table.attrs.get("id"),
+            "table": table,
+        } for idx, table in enumerate(soup.find_all("table"))
+    ]
     for idx, anchor in enumerate(anchors, 1):
         id_kind = None
         an_id = anchor.attrs.get("id")
@@ -100,17 +106,43 @@ def processor(data) -> dict:
             "href": handle_href(anchor.attrs.get("href")),
             "@id": id_kind,
         }
+    # t_index is a dictionary with table indexes and then the table content,
+    #	[(this["index"], this["table-id"]) for this in tabular if this["table-id"] is not None]
+    for this in tabular:
+        tab_id = this["table-id"]
+        if tab_id is None:
+            continue
+        t_index[this["index"]] = {
+            "table-id": tab_id,
+            "table": this["table"],
+            "table-rows": iterate_over([row for row in this["table"].children]),
+        }
+    # Combining own properties
     obj = {
         "soup": [soup],
         "title": soup.title.string.strip(),
         "anchors": anchors,
         "a-index": all_a,
         "tables": tabular,
+        "t-index": t_index,
     }
     res = {
         "fixture": obj,
     }
     print("::", "title:", obj["title"])
+    return res
+
+def iterate_over(alist:list) -> list:
+    """ Returns the list of rows. """
+    res = []
+    for row in alist:
+        if row.name not in ("tr",):
+            continue
+        elem = {
+            "attrs": row.attrs,
+            "row": [elem for elem in row.children if elem.name == "td"],
+        }
+        res.append(elem)
     return res
 
 def handle_href(astr) -> str:
