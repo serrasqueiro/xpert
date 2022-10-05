@@ -44,3 +44,8 @@ Use `bpython` to explore the HTML tree (using BeautifulSoup4).
 1. `adict = fixture.processor(data)`
 1. `tbls = [(key, adict["fixture"]["t-index"][key]) for key in adict["fixture"]["t-index"]]`
 1. `atables = [(elem["index"], elem["table-id"]) for elem in adict["fixture"]["tables"]]`
+   + for the particular xperteleven fixtures tables, use:
+     * `[(idx, tbl_id) for idx, tbl_id in atables if tbl_id and "Fixture" in tbl_id]`
+     * output: `[(9, 'ctl00_cphMain_dgFixture')]`
+     * we pick index 9, let's say tbl_idx=9,
+     * `triplist = [(idx, elem.name, elem.contents, elem) for idx, elem in enumerate(adict["fixture"]["t-index"][tbl_idx]["table-rows"][0]["row"], 1)]`
